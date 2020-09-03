@@ -1,5 +1,5 @@
 function updateTimer(deadline) {
-    var time = deadline - new Date();
+    let time = deadline - new Date();
     return {
         'hari': Math.floor(time / (1000 * 60 * 60 * 24)),
         'jam': Math.floor((time / (1000 * 60 * 60)) % 24),
@@ -17,9 +17,9 @@ function animateClock(span) {
 }
 
 function startTimer(id, deadline) {
-    var timerInterval = setInterval(function () {
-        var clock = document.getElementById(id);
-        var timer = updateTimer(deadline);
+    let timerInterval = setInterval(function () {
+        let clock = document.getElementById(id);
+        let timer = updateTimer(deadline);
 
         clock.innerHTML = '<span>' + timer.hari + '</span>'
             + '<span>' + timer.jam + '</span>'
@@ -27,7 +27,7 @@ function startTimer(id, deadline) {
             + '<span>' + timer.detik + '</span>';
 
         // animations
-        var spans = clock.getElementsByTagName("span");
+        let spans = clock.getElementsByTagName("span");
         animateClock(spans[3]);
         if (timer.detik == 59) animateClock(spans[2]);
         if (timer.menit == 59 && timer.detik == 59) animateClock(spans[1]);
@@ -43,6 +43,6 @@ function startTimer(id, deadline) {
 }
 
 window.onload = function () {
-    var deadline = new Date("October 1, 2020 18:00:00");
+    let deadline = new Date("October 1, 2020 18:00:00");
     startTimer("clock", deadline);
 }
